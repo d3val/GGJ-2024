@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    CharacterController controller;
     [SerializeField] InputActionAsset primatyActions;
     InputActionMap playerActionMap;
     InputAction YInput;
@@ -17,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        controller = GetComponent<CharacterController>();
         playerActionMap = primatyActions.FindActionMap("Player");
         YInput = playerActionMap.FindAction("YMove");
         XInput = playerActionMap.FindAction("XMove");
@@ -31,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(direction);
 
         Move();
     }
