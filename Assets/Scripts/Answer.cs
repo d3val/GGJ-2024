@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Answer : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Answer : MonoBehaviour
         canMove = true;
         direction.x = Random.Range(-5, 5f);
         direction.y = Random.Range(-2.5f, 2.5f);
+        GetComponent<Button>().interactable = true;
     }
 
     private void OnDisable()

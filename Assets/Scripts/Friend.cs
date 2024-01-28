@@ -10,7 +10,7 @@ public class Friend : MonoBehaviour
     InputActionMap UIActionMap;
     InputAction continueDialog;
     [TextArea] public List<string> dialogos;
-    int currentDialog;
+    public int currentDialog;
     [SerializeField] List<Question> questions;
     [SerializeField] List<int> dialogQuestions;
     public int currentQuestion;

@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderGraph.Serialization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AnswerManager : MonoBehaviour
 {
+    [SerializeField] float confidenceWinValue = 40;
+    [SerializeField] float confidenceLostValue = 30;
     [SerializeField] List<GameObject> answers;
     List<Answer> answersComponents;
     public static AnswerManager instance;
     public bool isAnswering;
     public Friend currentFriend;
+    public GameObject confidenceSlider;
+    public float confidenceDecreaseSpeed = 2;
+    Slider slider;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -21,10 +27,24 @@ public class AnswerManager : MonoBehaviour
             {
                 answersComponents.Add(gameObject.GetComponent<Answer>());
             }
+            slider = confidenceSlider.GetComponent<Slider>();
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if (slider.IsActive())
+        {
+            if(slider.value==slider.maxValue)
+            {
+                EndConversation();
+                return;
+            }
+            slider.value -= Time.deltaTime* confidenceDecreaseSpeed;
         }
     }
 
@@ -36,14 +56,23 @@ public class AnswerManager : MonoBehaviour
         foreach (GameObject x in answers)
         {
             x.GetComponent<Answer>().canMove = false;
+            x.GetComponent<Button>().interactable = false;
         }
         currentFriend.currentQuestion++;
         isAnswering = false;
 
         if (ans.state)
-            Debug.Log("Exito en la vida");
+            slider.value += confidenceWinValue;
         else
-            Debug.Log("No pues chale");
+            slider.value -= confidenceLostValue;
+
+    }
+
+    public void EndConversation()
+    {
+        confidenceSlider.SetActive(false);
+        currentFriend.currentDialog = currentFriend.dialogos.Count - 1;
+        currentFriend = null;
     }
 
     public void ActiveAnswers(List<string> answerTexts, List<bool> state, Friend friend)
@@ -60,6 +89,7 @@ public class AnswerManager : MonoBehaviour
             ans.canMove = true;
             i++;
         }
+        confidenceSlider.SetActive(true);
     }
 
     public void DeactiveAnswers()
