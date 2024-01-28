@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class Friend : MonoBehaviour
     InputAction continueDialog;
     [TextArea] public List<string> dialogos;
     int currentDialog;
+    [SerializeField] List<PosssibleAnswer> possibleAnswers;
+    int currentAnswer;
 
     // Start is called before the first frame update
     void Awake()
@@ -22,10 +25,17 @@ public class Friend : MonoBehaviour
 
     public void SpeakDialog(InputAction.CallbackContext ctx)
     {
-        if (currentDialog >= dialogos.Count)
+        if (DialogBox.instance.isPrinting)
+        {
+            DialogBox.instance.InstantPrint();
             return;
-        StartCoroutine(DialogBox.instance.PrintDialog(dialogos[currentDialog]));
-        currentDialog++;
+        }
+
+        if (currentDialog < dialogos.Count)
+        {
+            DialogBox.instance.StartPrint(dialogos[currentDialog]);
+            currentDialog++;
+        }
     }
 
     private void OnEnable()
@@ -36,5 +46,12 @@ public class Friend : MonoBehaviour
     private void OnDisable()
     {
         continueDialog.Disable();
+    }
+
+    [Serializable]
+    public class PosssibleAnswer
+    {
+        [TextArea] public string answerText;
+        public bool isCorrect = false;
     }
 }

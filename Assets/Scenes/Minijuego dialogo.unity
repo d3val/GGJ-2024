@@ -753,6 +753,15 @@ MonoBehaviour:
   dialogos:
   - Soy un amigo
   - Soy el mismo amigo
+  possibleAnswers:
+  - answerText: No creo
+    isCorrect: 0
+  - answerText: Yo creo que si
+    isCorrect: 1
+  - answerText: Quien sabe
+    isCorrect: 0
+  - answerText: Ya me voy
+    isCorrect: 0
 --- !u!4 &1239109403
 Transform:
   m_ObjectHideFlags: 0

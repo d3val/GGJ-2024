@@ -8,10 +8,11 @@ public class DialogBox : MonoBehaviour
     public static DialogBox instance;
     [TextArea] public string text;
     [SerializeField] float printSpeed = 1f;
-    public  TextMeshProUGUI shownedText;
+    public TextMeshProUGUI shownedText;
     float timer;
     int stringIndex;
     string currentText = "";
+    public bool isPrinting;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class DialogBox : MonoBehaviour
 
     IEnumerator PrintDialog()
     {
+        isPrinting = true;
         stringIndex = 0;
         currentText = "";
         while (currentText != text)
@@ -44,29 +46,23 @@ public class DialogBox : MonoBehaviour
                 stringIndex++;
                 timer = 0;
             }
-
             timer += Time.deltaTime;
             yield return null;
         }
+        isPrinting = false;
     }
 
-    public IEnumerator PrintDialog(string text)
+    public void InstantPrint()
     {
-        stringIndex = 0;
-        currentText = "";
-        while (currentText != text)
-        {
-            if (timer > printSpeed)
-            {
-                currentText += text[stringIndex];
-                shownedText.text = currentText;
-                stringIndex++;
-                timer = 0;
-            }
+        StopAllCoroutines();
+        shownedText.text = text;
+        isPrinting= false;
+    }
 
-            timer += Time.deltaTime;
-            yield return null;
-        }
+    public void StartPrint(string targetText)
+    {
+        text= targetText;
+        StartCoroutine(PrintDialog());
     }
 }
 
