@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Answer : MonoBehaviour
@@ -7,6 +8,9 @@ public class Answer : MonoBehaviour
     RectTransform rectTransform;
     [SerializeField] float speed = 5f;
     Vector2 direction;
+    public bool state;
+    public bool canMove;
+    public TextMeshProUGUI textMeshProUGUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +20,7 @@ public class Answer : MonoBehaviour
 
     private void OnEnable()
     {
+        canMove = true;
         direction.x = Random.Range(-5, 5f);
         direction.y = Random.Range(-2.5f, 2.5f);
     }
@@ -23,6 +28,10 @@ public class Answer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove)
+        {
+            return;
+        }
         rectTransform.Translate(direction.normalized * speed * Time.deltaTime);
 
         if (rectTransform.position.x > 1920)

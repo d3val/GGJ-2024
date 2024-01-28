@@ -23,11 +23,6 @@ public class Friend : MonoBehaviour
         continueDialog.performed += SpeakDialog;
     }
 
-    private void Update()
-    {
-        Debug.Log(currentDialog);
-    }
-
     public void SpeakDialog(InputAction.CallbackContext ctx)
     {
         if (AnswerManager.instance.isAnswering)
@@ -45,9 +40,16 @@ public class Friend : MonoBehaviour
             currentDialog++;
         }
 
-        if (dialogQuestions.Contains(currentDialog-1))
+        if (dialogQuestions.Contains(currentDialog - 1))
         {
-            AnswerManager.instance.ActiveAnswers();
+            List<string> answerTexts = new List<string>();
+            List<bool> answerValue = new List<bool>();
+            foreach (PosssibleAnswer x in possibleAnswers)
+            {
+                answerTexts.Add(x.answerText);
+                answerValue.Add(x.isCorrect);
+            }
+            AnswerManager.instance.ActiveAnswers(answerTexts, answerValue);
         }
     }
 

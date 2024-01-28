@@ -227,6 +227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 800
+  state: 0
+  textMeshProUGUI: {fileID: 5571022016853785917}
 --- !u!114 &3531329871587125957
 MonoBehaviour:
   m_ObjectHideFlags: 0
