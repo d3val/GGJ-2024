@@ -14,6 +14,7 @@ public class Friend : MonoBehaviour
     [SerializeField] List<Question> questions;
     [SerializeField] List<int> dialogQuestions;
     public int currentQuestion;
+    public bool isTalking;
 
     // Start is called before the first frame update
     void Awake()
@@ -29,6 +30,39 @@ public class Friend : MonoBehaviour
         if (AnswerManager.instance.isAnswering)
             return;
 
+        AnswerManager.instance.DeactiveAnswers();
+
+        if (DialogBox.instance.isPrinting)
+        {
+            DialogBox.instance.InstantPrint();
+            return;
+        }
+
+        if (currentDialog < dialogos.Count)
+        {
+            DialogBox.instance.StartPrint(dialogos[currentDialog]);
+            currentDialog++;
+        }
+
+        if (dialogQuestions.Contains(currentDialog - 1))
+        {
+            List<string> answerTexts = new List<string>();
+            List<bool> answerValue = new List<bool>();
+            foreach (PosssibleAnswer x in questions[currentQuestion].answers)
+            {
+                answerTexts.Add(x.answerText);
+                answerValue.Add(x.isCorrect);
+            }
+            AnswerManager.instance.ActiveAnswers(answerTexts, answerValue, this);
+        }
+
+        if (currentDialog > dialogos.Count)
+            isTalking = false;
+    }
+
+    public void StartSpeech()
+    {
+        isTalking = true;
         AnswerManager.instance.DeactiveAnswers();
 
         if (DialogBox.instance.isPrinting)
