@@ -7,6 +7,9 @@ public class ClockAnimation : MonoBehaviour
 {
     [SerializeField] Sprite[] clockFrames;
 
+    public float clockTimer;
+    public bool timerOn;
+
     private Image image;
     private int totalFrames;
     private int actualFrame;
@@ -37,6 +40,20 @@ public class ClockAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (timerOn)
+        {
+            if (clockTimer > 0)
+            {
+                clockTimer -= Time.deltaTime;
+            }
+            else 
+            {
+                Debug.Log("Times up");
+                timerOn = false;
+                clockTimer = 0;
+
+            }
+        }
         if(Input.GetKeyUp(KeyCode.Space))
         {
             NextFrame();    
