@@ -6,6 +6,7 @@ public class AnswerManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> answers;
     public static AnswerManager instance;
+    public bool isAnswering;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class AnswerManager : MonoBehaviour
 
     public void ActiveAnswers()
     {
+        isAnswering = true;
         foreach (GameObject answer in answers)
         {
             answer.SetActive(true);

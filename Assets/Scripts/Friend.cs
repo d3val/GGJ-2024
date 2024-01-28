@@ -12,7 +12,7 @@ public class Friend : MonoBehaviour
     [TextArea] public List<string> dialogos;
     int currentDialog;
     [SerializeField] List<PosssibleAnswer> possibleAnswers;
-    int currentAnswer;
+    [SerializeField] List<int> dialogQuestions;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,8 +23,16 @@ public class Friend : MonoBehaviour
         continueDialog.performed += SpeakDialog;
     }
 
+    private void Update()
+    {
+        Debug.Log(currentDialog);
+    }
+
     public void SpeakDialog(InputAction.CallbackContext ctx)
     {
+        if (AnswerManager.instance.isAnswering)
+            return;
+
         if (DialogBox.instance.isPrinting)
         {
             DialogBox.instance.InstantPrint();
@@ -35,6 +43,11 @@ public class Friend : MonoBehaviour
         {
             DialogBox.instance.StartPrint(dialogos[currentDialog]);
             currentDialog++;
+        }
+
+        if (dialogQuestions.Contains(currentDialog-1))
+        {
+            AnswerManager.instance.ActiveAnswers();
         }
     }
 

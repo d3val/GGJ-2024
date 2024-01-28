@@ -176,6 +176,7 @@ MonoBehaviour:
   - {fileID: 1705440238}
   - {fileID: 1604887247}
   - {fileID: 1975143609}
+  isAnswering: 0
 --- !u!1001 &476536950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -751,8 +752,48 @@ MonoBehaviour:
   primaryAssets: {fileID: -944628639613478452, guid: 5e987a25b822ad240bbc5c41bec8ecca,
     type: 3}
   dialogos:
-  - Soy un amigo
-  - Soy el mismo amigo
+  - Soy un amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigoSoy un
+    amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigoSoy
+    un amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigo
+  - 'Soy el mismo amigo
+
+    Soy el mismo amigo
+
+    Soy el mismo amigo
+
+    Soy
+    el mismo amigo
+
+    Soy el mismo amigo
+
+    Soy el mismo amigo
+
+    Soy el mismo
+    amigo
+
+    Soy el mismo amigo
+
+    Soy el mismo amigo
+
+    Soy el mismo amigo
+
+    Soy
+    el mismo amigo
+
+    Soy el mismo amigo
+
+    Soy el mismo amigo
+
+    Soy el mismo
+    amigo
+
+    Soy el mismo amigo
+
+    Soy el mismo amigo
+
+'
+  - Pregunta importante
+  - Adios
   possibleAnswers:
   - answerText: No creo
     isCorrect: 0
@@ -762,6 +803,7 @@ MonoBehaviour:
     isCorrect: 0
   - answerText: Ya me voy
     isCorrect: 0
+  dialogQuestions: 02000000
 --- !u!4 &1239109403
 Transform:
   m_ObjectHideFlags: 0
@@ -1108,6 +1150,7 @@ MonoBehaviour:
     Soy un texto de prueba.'
   printSpeed: 0.07
   shownedText: {fileID: 631926165}
+  isPrinting: 0
 --- !u!114 &1931937740
 MonoBehaviour:
   m_ObjectHideFlags: 0
