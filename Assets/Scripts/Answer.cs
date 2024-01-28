@@ -11,6 +11,11 @@ public class Answer : MonoBehaviour
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
         direction.x = Random.Range(-5, 5f);
         direction.y = Random.Range(-2.5f, 2.5f);
     }
@@ -34,7 +39,7 @@ public class Answer : MonoBehaviour
         if (rectTransform.position.y > 1080)
         {
             rectTransform.position = new Vector2(rectTransform.position.x, 1079);
-            direction.y = Random.Range(-2.5f,-0.5f);
+            direction.y = Random.Range(-2.5f, -0.5f);
         }
         else if (rectTransform.position.y < 0)
         {
