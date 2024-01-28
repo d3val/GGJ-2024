@@ -15,6 +15,7 @@ public class AnswerManager : MonoBehaviour
     public Friend currentFriend;
     public GameObject confidenceSlider;
     public float confidenceDecreaseSpeed = 2;
+    public GameObject dialogUI;
     Slider slider;
     // Start is called before the first frame update
     private void Awake()
@@ -33,6 +34,11 @@ public class AnswerManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void ActiveDialog()
+    {
+        dialogUI.SetActive(true);
     }
 
     private void Update()

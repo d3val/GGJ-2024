@@ -67,15 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Interact(InputAction.CallbackContext ctx)
     {
-        if (currentFriend == null)
-            return;
-
-        if (currentFriend.isTalking)
-        {
-            return;
-        }
-
-        currentFriend.StartSpeech();
+        
     }
 
     private void OnEnable()
@@ -99,6 +91,16 @@ public class PlayerMovement : MonoBehaviour
         {
             currentFriend = collision.GetComponent<Friend>();
         }
+
+        if (currentFriend == null)
+            return;
+
+        if (currentFriend.isTalking)
+        {
+            return;
+        }
+
+        currentFriend.StartSpeech();
     }
 
     private void OnTriggerExit(Collider other)

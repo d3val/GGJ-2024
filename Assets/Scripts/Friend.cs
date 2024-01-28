@@ -63,6 +63,7 @@ public class Friend : MonoBehaviour
     public void StartSpeech()
     {
         isTalking = true;
+        AnswerManager.instance.ActiveDialog();
         AnswerManager.instance.DeactiveAnswers();
 
         if (DialogBox.instance.isPrinting)
