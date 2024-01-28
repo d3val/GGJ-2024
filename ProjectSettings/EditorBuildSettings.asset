@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/UIScene.unity
     guid: 71dbad9cd22a1cd4b9fae2ce32d936b9
   - enabled: 1
-    path: Assets/Scenes/Nivel 1.unity
+    path: Assets/Scenes/Nivel1.unity
     guid: 746110d799f07b444a4fa91b158de23d
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
