@@ -9,17 +9,32 @@ public class Friend : MonoBehaviour
     InputActionMap UIActionMap;
     InputAction continueDialog;
     [TextArea] public List<string> dialogos;
-    int i;
+    int currentDialog;
 
     // Start is called before the first frame update
     void Awake()
     {
         UIActionMap = primaryAssets.FindActionMap("UI");
         continueDialog = primaryAssets.FindAction("NextDialog");
+
+        continueDialog.performed += SpeakDialog;
     }
 
-    public void SpeakDialog()
+    public void SpeakDialog(InputAction.CallbackContext ctx)
     {
-        StartCoroutine(DialogBox.instance.PrintDialog(dialogos[0]));
+        if (currentDialog >= dialogos.Count)
+            return;
+        StartCoroutine(DialogBox.instance.PrintDialog(dialogos[currentDialog]));
+        currentDialog++;
+    }
+
+    private void OnEnable()
+    {
+        continueDialog.Enable();
+    }
+
+    private void OnDisable()
+    {
+        continueDialog.Disable();
     }
 }

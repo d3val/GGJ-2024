@@ -454,10 +454,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb909cd30fecf547a71330b3a7e6efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryAssets: {fileID: 0}
+  primaryAssets: {fileID: -944628639613478452, guid: 5e987a25b822ad240bbc5c41bec8ecca,
+    type: 3}
   dialogos:
-  - Soy un dialogo
-  - 
+  - Soy un amigo
+  - Soy el mismo amigo
 --- !u!4 &1239109403
 Transform:
   m_ObjectHideFlags: 0
