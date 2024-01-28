@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Serialization;
 using UnityEngine;
 
 public class AnswerManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class AnswerManager : MonoBehaviour
     List<Answer> answersComponents;
     public static AnswerManager instance;
     public bool isAnswering;
+    public Friend currentFriend;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -28,17 +30,25 @@ public class AnswerManager : MonoBehaviour
 
     public void CheckAnswer(Answer ans)
     {
-        if (ans.state)
-            Debug.Log("Exito en la vida");
+        if (DialogBox.instance.isPrinting)
+            return;
 
         foreach (GameObject x in answers)
         {
             x.GetComponent<Answer>().canMove = false;
         }
+        currentFriend.currentQuestion++;
+        isAnswering = false;
+
+        if (ans.state)
+            Debug.Log("Exito en la vida");
+        else
+            Debug.Log("No pues chale");
     }
 
-    public void ActiveAnswers(List<string> answerTexts, List<bool> state)
+    public void ActiveAnswers(List<string> answerTexts, List<bool> state, Friend friend)
     {
+        currentFriend = friend;
         isAnswering = true;
         int i = 0;
         foreach (GameObject answer in answers)
@@ -49,6 +59,14 @@ public class AnswerManager : MonoBehaviour
             ans.state = state[i];
             ans.canMove = true;
             i++;
+        }
+    }
+
+    public void DeactiveAnswers()
+    {
+        foreach (GameObject answer in answers)
+        {
+            answer.SetActive(false);
         }
     }
 }

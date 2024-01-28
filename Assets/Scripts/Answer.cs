@@ -25,9 +25,16 @@ public class Answer : MonoBehaviour
         direction.y = Random.Range(-2.5f, 2.5f);
     }
 
+    private void OnDisable()
+    {
+        canMove = true;
+        Debug.Log("Chale");
+    }
+
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(canMove);
         if (!canMove)
         {
             return;

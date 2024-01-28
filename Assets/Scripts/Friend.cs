@@ -11,8 +11,9 @@ public class Friend : MonoBehaviour
     InputAction continueDialog;
     [TextArea] public List<string> dialogos;
     int currentDialog;
-    [SerializeField] List<PosssibleAnswer> possibleAnswers;
+    [SerializeField] List<Question> questions;
     [SerializeField] List<int> dialogQuestions;
+    public int currentQuestion;
 
     // Start is called before the first frame update
     void Awake()
@@ -27,6 +28,8 @@ public class Friend : MonoBehaviour
     {
         if (AnswerManager.instance.isAnswering)
             return;
+
+        AnswerManager.instance.DeactiveAnswers();
 
         if (DialogBox.instance.isPrinting)
         {
@@ -44,12 +47,12 @@ public class Friend : MonoBehaviour
         {
             List<string> answerTexts = new List<string>();
             List<bool> answerValue = new List<bool>();
-            foreach (PosssibleAnswer x in possibleAnswers)
+            foreach (PosssibleAnswer x in questions[currentQuestion].answers)
             {
                 answerTexts.Add(x.answerText);
                 answerValue.Add(x.isCorrect);
             }
-            AnswerManager.instance.ActiveAnswers(answerTexts, answerValue);
+            AnswerManager.instance.ActiveAnswers(answerTexts, answerValue, this);
         }
     }
 
@@ -68,5 +71,11 @@ public class Friend : MonoBehaviour
     {
         [TextArea] public string answerText;
         public bool isCorrect = false;
+    }
+
+    [Serializable]
+    public class Question
+    {
+        public List<PosssibleAnswer> answers;
     }
 }
