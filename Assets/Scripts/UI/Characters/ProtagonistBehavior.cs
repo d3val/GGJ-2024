@@ -29,20 +29,21 @@ public class ProtagonistBehavior : MonoBehaviour
     }
     void Start()
     {
+        desireFace = 0;
         facesAmount = faces.Length;
-        actualFace = faces[0];
+        actualFace = faces[desireFace];
         ShowNewFace(actualFace);
 
         //variable para comprobación para cambio de caras
-        a = 0;
+        //a = 0;
     }
     
     // Método de comprobación para cambio de caras
-    void Update ()
+    /*void Update ()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            if(desireFace < 2)
+            if(desireFace < facesAmount)
             {
                 a++;
                 desireFace = a;
@@ -57,5 +58,5 @@ public class ProtagonistBehavior : MonoBehaviour
                 ChangeFace(faces[desireFace]);
             }
         }
-    }
+    }*/
 }
