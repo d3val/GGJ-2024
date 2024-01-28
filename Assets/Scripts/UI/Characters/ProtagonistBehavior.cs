@@ -7,9 +7,12 @@ public class ProtagonistBehavior : MonoBehaviour
     [SerializeField] ProtagonistBehavior m_Behavior;
     public GameObject [] faces;
     private GameObject actualFace;
-    private int facesAmount;
+    
     public  int desireFace;
-    private int a;
+    
+    /* Variables para testeo de caras
+    private int facesAmount;
+    private int a;*/
 
     public void HideActualFace(GameObject OldFace)
     {
@@ -29,20 +32,22 @@ public class ProtagonistBehavior : MonoBehaviour
     }
     void Start()
     {
-        facesAmount = faces.Length;
-        actualFace = faces[0];
+        desireFace = 1;
+
+        actualFace = faces[desireFace];
         ShowNewFace(actualFace);
 
         //variable para comprobación para cambio de caras
-        a = 0;
+        //facesAmount = faces.Length;
+        //a = 0;
     }
     
     // Método de comprobación para cambio de caras
-    void Update ()
+    /*void Update ()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            if(desireFace < 2)
+            if(desireFace < facesAmount)
             {
                 a++;
                 desireFace = a;
@@ -57,5 +62,5 @@ public class ProtagonistBehavior : MonoBehaviour
                 ChangeFace(faces[desireFace]);
             }
         }
-    }
+    }*/
 }
