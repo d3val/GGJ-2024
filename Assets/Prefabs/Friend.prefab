@@ -50,71 +50,42 @@ MonoBehaviour:
   primaryAssets: {fileID: -944628639613478452, guid: 5e987a25b822ad240bbc5c41bec8ecca,
     type: 3}
   dialogos:
-  - Soy un amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigoSoy un
-    amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigoSoy
-    un amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigoSoy un amigo
-  - 'Soy el mismo amigo
-
-    Soy el mismo amigo
-
-    Soy el mismo amigo
-
-    Soy
-    el mismo amigo
-
-    Soy el mismo amigo
-
-    Soy el mismo amigo
-
-    Soy el mismo
-    amigo
-
-    Soy el mismo amigo
-
-    Soy el mismo amigo
-
-    Soy el mismo amigo
-
-    Soy
-    el mismo amigo
-
-    Soy el mismo amigo
-
-    Soy el mismo amigo
-
-    Soy el mismo
-    amigo
-
-    Soy el mismo amigo
-
-    Soy el mismo amigo
-
-'
-  - Pregunta importante
-  - Ta bien
-  - Otra preguna
-  - Adios ahora si
+  - "Hey! \xBFQue con ese outfit?"
+  - jajaja no! aunque suena diverido
+  - Ya se fueron todos, llegas tarde!
+  - jajajaja, te ayudo!
+  - Tal vez deba irme ya...
+  - "!Asi se habla! \xA1\xA1\xA1hasta el amanecer!!!!!"
   currentDialog: 0
   questions:
   - answers:
-    - answerText: Correcto
+    - answerText: "out...\xBFque?"
+      isCorrect: 0
+    - answerText: ah, no era una fiesta de disfraces?
       isCorrect: 1
-    - answerText: Incorrecto
+    - answerText: definitivamente no soy un alien
       isCorrect: 0
-    - answerText: Incorrecto
-      isCorrect: 0
-    - answerText: Incorrecto
+    - answerText: "\xBFQue con el tuyo?"
       isCorrect: 0
   - answers:
-    - answerText: Correcto 2
+    - answerText: vengo a robarme el tanque de gas
       isCorrect: 1
-    - answerText: Incorrecto 2
+    - answerText: y tu sigues aqui, triste
       isCorrect: 0
-    - answerText: Incorrecto 2
+    - answerText: tan rapido? suena a fiesta aburrida
       isCorrect: 0
-    - answerText: Incorrecto 2
+    - answerText: mejor para mi
       isCorrect: 0
-  dialogQuestions: 0200000004000000
+  - answers:
+    - answerText: por favor
+      isCorrect: 0
+    - answerText: irnos!
+      isCorrect: 1
+    - answerText: ser el ultimo en irse es triste..
+      isCorrect: 0
+    - answerText: ...
+      isCorrect: 0
+  dialogQuestions: 000000000200000004000000
   currentQuestion: 0
   isTalking: 0
 --- !u!212 &6891017751944461453

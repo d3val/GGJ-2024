@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea3f072f7b92584088fdef2563bf835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 800
+  speed: 550
   state: 0
   canMove: 0
   textMeshProUGUI: {fileID: 5571022016853785917}
